@@ -6,6 +6,7 @@
     "lint": "tslint --project \"tsconfig.json\"",
     "start": "node -r module-alias/register ./dist",
     "start:dev": "nodemon --config nodemon.json",
+    "ngrok": "./ngrok http 3000",
     "test": "nodemon --config nodemon.test.json"
   },
   "_moduleAliases": {
@@ -15,13 +16,23 @@
     "@server": "dist/Server"
   },
   "dependencies": {
+    "@aoberoi/passport-slack": "^1.0.5",
+    "@slack/events-api": "^2.3.0",
+    "@slack/web-api": "^5.6.0",
+    "@types/mongoose": "^5.5.34",
+    "@types/passport": "^1.0.2",
+    "body-parser": "^1.19.0",
+    "chalk": "^3.0.0",
     "command-line-args": "^5.1.1",
     "cookie-parser": "^1.4.4",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "http-status-codes": "^1.4.0",
+    "isomorphic-fetch": "^2.2.1",
     "module-alias": "^2.2.2",
+    "mongoose": "^5.8.1",
     "morgan": "^1.9.1",
+    "passport": "^0.4.1",
     "winston": "^3.2.1"
   },
   "devDependencies": {

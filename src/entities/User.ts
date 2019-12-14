@@ -1,23 +1,23 @@
-
 export interface IUser {
-    id?: number;
-    name: string;
-    email: string;
+  id?: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  isPrimary: boolean;
 }
 
 export class User implements IUser {
+  public id?: number;
+  public firstName: string;
+  public lastName: string;
+  public email: string;
+  public isPrimary: boolean;
 
-    public id?: number;
-    public name: string;
-    public email: string;
-
-    constructor(nameOrUser: string | IUser, email?: string) {
-        if (typeof nameOrUser === 'string') {
-            this.name = nameOrUser;
-            this.email = email || '';
-        } else {
-            this.name = nameOrUser.name;
-            this.email = nameOrUser.email;
-        }
-    }
+  constructor(args: IUser) {
+    this.id = args.id;
+    this.firstName = args.firstName;
+    this.lastName = args.lastName;
+    this.email = args.email;
+    this.isPrimary = args.isPrimary;
+  }
 }
