@@ -2,7 +2,7 @@ import * as mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-export const CompanySchema = new Schema(
+const CompanySchema = new Schema(
   {
     slackId: {
       type: String,
@@ -19,3 +19,6 @@ export const CompanySchema = new Schema(
   },
   { timestamps: true }
 );
+
+const CompanyModel = mongoose.model("companies", CompanySchema);
+export default CompanyModel;

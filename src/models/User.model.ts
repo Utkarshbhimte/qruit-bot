@@ -1,8 +1,9 @@
 import * as mongoose from "mongoose";
+import { User } from "@entities";
 
 const Schema = mongoose.Schema;
 
-export const UserSchema = new Schema(
+export const UserSchema = new Schema<User>(
   {
     firstName: {
       type: String,
@@ -22,3 +23,6 @@ export const UserSchema = new Schema(
   },
   { timestamps: true }
 );
+
+const UserModel = mongoose.model("users", UserSchema);
+export default UserModel;
