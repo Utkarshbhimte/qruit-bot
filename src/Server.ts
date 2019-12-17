@@ -10,6 +10,8 @@ import './db';
 
 import BaseRouter from './routes';
 import { slackEvents } from './Bot';
+import { ISlackCompanyResponse } from '@entities';
+import { CompanyDao } from '@daos';
 
 // Init express
 const app = express();
@@ -32,7 +34,7 @@ app.get('/auth/slack', async (req, res) => {
     const url = 'https://slack.com/api/oauth.access';
     const {
       SLACK_CLIENT_ID: client_id,
-      SLACK_SIGNING_SECRET: client_secret,
+      SLACK_CLIENT_SECRET: client_secret,
     } = process.env;
 
     if (!client_id || !client_secret) {
@@ -53,11 +55,13 @@ app.get('/auth/slack', async (req, res) => {
       body: params,
     });
 
-    const response = await request.json();
+    const response: ISlackCompanyResponse = await request.json();
 
     if (!response.ok) {
       throw new Error(response.error);
     }
+
+    await CompanyDao.add(response);
 
     res.send({ message: 'aaya', code, client_id, client_secret, response });
   } catch (error) {

@@ -1,24 +1,37 @@
-import * as mongoose from "mongoose";
+import * as mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
-const CompanySchema = new Schema(
+export const CompanySchema = new Schema(
   {
-    slackId: {
+    slackTeamId: {
       type: String,
-      required: true
+      required: true,
     },
     name: {
       type: String,
-      required: true
+      required: true,
     },
     slackToken: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
+    slackScope: {
+      type: String,
+      required: true,
+    },
+    primaryUserSlackId: {
+      type: String,
+      required: true,
+    },
+    botUserId: {
+      type: String,
+      required: true,
+    },
+    botAccessToken: {
+      type: String,
+      required: true,
+    },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
-
-const CompanyModel = mongoose.model("companies", CompanySchema);
-export default CompanyModel;
