@@ -30,7 +30,7 @@ export interface ICompany {
   botAccessToken: string;
 }
 
-export interface ICompanyDocument extends Document {}
+export interface ICompanyDocument extends ICompany, Document {}
 
 export class Company implements ICompany {
   public slackTeamId: string;

@@ -61,7 +61,7 @@ app.get('/auth/slack', async (req, res) => {
       throw new Error(response.error);
     }
 
-    await CompanyDao.add(response);
+    await CompanyDao.register(response);
 
     res.send({ message: 'aaya', code, client_id, client_secret, response });
   } catch (error) {
